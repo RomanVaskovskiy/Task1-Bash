@@ -1,0 +1,206 @@
+HW_1. The first part. GitBash commands
+
+
+1) Посмотреть где я
+	- PWD
+
+2) Создать папку
+	- mkdir RV-1
+
+3) Зайти в папку
+	cd RV-1
+
+4) Создать 3 папки
+	mkdir RV-2 RV-3 RV-4
+
+5) Зайти в любоую папку
+	cd RV-2	
+
+6) Создать 5 файлов (3 txt, 2 json)
+	touch r1.txt r2.txt r3.txt v1.json v2.json
+	touch r{1..3}.txt v{1..2}.json
+	
+
+7) Создать 3 папки
+	mkdir R-2 R-3 R-4 
+	mkdir KV-{2..4}
+
+8) Вывести список содержимого папки
+	у меня команда ls -la: command not found
+	ls.. - только папки
+	ls - файлы и папки
+
+9) + Открыть любой txt файл
+	cat >>r1.txt
+
+10) + написать туда что-нибудь, любой текст.
+	123
+	qwe
+	fghj
+	rfv
+
+
+11) + сохранить и выйти.
+	Ctrl+c
+
+12) Выйти из папки на уровень выше
+	cd ..
+
+13) переместить любые 2 файла, которые вы создали, в любую другую папку.
+	
+	User@R2D2 MINGW64 /d/course QA Group_30/RV-1/RV-2
+	$ ls
+	R-4/  RV9/  r2.txt  r22.txt 
+	- mv r2.txt R-4/r2.txt
+	
+	User@R2D2 MINGW64 /d/course QA Group_30/RV-1/RV-2
+	$ ls
+	R-4/  RV9/  r22.txt 
+
+
+	User@R2D2 MINGW64 /d/course QA Group_30/RV-1/RV-2
+	$ ls R-4 
+	R-5/  g22.txt  r2.txt 
+
+	User@R2D2 MINGW64 /d/course QA Group_30/RV-1/RV-2
+	- mv R-4/g22.txt RV9/g22.txt
+
+	User@R2D2 MINGW64 /d/course QA Group_30/RV-1/RV-2
+	$ ls R-4
+	R-5/  r2.txt  
+
+	User@R2D2 MINGW64 /d/course QA Group_30/RV-1/RV-2
+	- mv r2.txt r3.txt R-5/r2.txt r3.txt
+	mv: target 'r3.txt' is not a directory Не знаю как пару файлов перемещать (, . - : / /* не помогает)
+
+	mv r{2..3}.txt R-4/r{2..3}.txt
+	mv 1/{new_file_4.json,new_file_5.json} 2
+	mv RV2/r1.txt RV3/r1.txt
+
+14) скопировать любые 2 файла, которые вы создали, в любую другую папку.
+	User@R2D2 MINGW64 /d/course QA Group_30/rv-1/rv-2
+	$ cp r-4/r2.txt rv-9/r2.txt
+
+	User@R2D2 MINGW64 /d/course QA Group_30/rv-1/rv-2
+
+	User@R2D2 MINGW64 /d/course QA Group_30/rv-1/rv-2
+	$ cp rv-9/g22.txt g33.txt r-4/g22.txt g33.txt
+	cp: target 'g33.txt' is not a directory Не знаю как пару файлов копировать ((((
+	
+	cp rv-8/r{4..5}.txt rv-9/r{4..5}.txt
+
+15) Найти файл по имени
+	find -name r1.txt
+
+16) просмотреть содержимое в реальном времени (команда grep) изучите как она работает.
+	Tail -f
+
+	Команда grep (расшифровывается как global regular expression print) - утилита командной строки Linux, 
+	который даёт пользователям возможность вести поиск строки,сортировать и фильтровать текст на основе
+	сложных правил.	
+	grep [опции] значение [ФАЙЛ]
+	Опции :
+–i: не будет различать верхний и нижний регистр.
+–w: заставить его находить только определенные слова.
+–v: выбирает строки, которые не совпадают.
+–n: показывает номер строки с запрошенными словами.
+–h: удаляет префикс из имени файла Unix в выводе.
+–r: рекурсивный поиск в каталогах.
+–R: как -r, но следуйте всем символическим ссылкам.
+–l: показывает только имена файлов с выделенными строками.
+–c- Показывает только одно количество выбранных строк для каждого файла.
+-Цвет: Отображает совпадающие шаблоны в цветах.
+	User@R2D2 MINGW64 /d/course QA Group_30/rv-1
+	$ grep -i sh r22.txt
+	shgkjshgkjhskjhgsjkfhkjsf
+	
+17) вывести несколько первых строк из текстового файла
+	
+	User@R2D2 MINGW64 /d/course QA Group_30/rv-1
+	$ head -5 r22.txt
+	shgkjshgkjhskjhgsjkfhkjsf
+	Roman study leqwertyuiop
+	asdfghjkl
+
+
+
+18) вывести несколько последних строк из текстового файла
+	User@R2D2 MINGW64 /d/course QA Group_30/rv-1
+	$ tac r22.txt
+	asdfghjkl     qwertyuiop
+	Roman study lesson QA
+	shgkjshgkjhskjhgsjkfhkjsf
+
+	User@R2D2 MINGW64 /d/course QA Group_30/rv-1
+	$ tail r22.txt
+	shgkjshgkjhskjhgsjkfhkjsf
+	Roman study leqwertyuiop
+	asdfghjkl
+
+
+
+19) просмотреть содержимое длинного файла (команда less) изучите как она работает.
+	Команда less обеспечит постраничный просмотр, что очень удобно. При этом:
+	- less позволяет просматривать текст по определённому числу строк, для чего достаточно указать - (тире или минус) и количество строк
+	less -3 r22.txt
+
+	- можно начать просмотр с конкретной строки в файле, указав + (плюс) и номер строки, с которой хотим начать чтение:
+	less +5 myfile.txt
+
+Открыв текст, мы можем управлять его просмотром.
+
+20) вывести дату и время
+	User@R2D2 MINGW64 /d/course QA Group_30/rv-1
+	$ date
+	Fri May 20 13:58:06     2022
+
+
+=========
+
+Задание *
+1) Отправить http запрос на сервер.
+http://162.55.220.72:5005/terminal-hw-request
+
+	$ curl http://162.55.220.72:5005/terminal-hw-request
+
+	$ curl -i  "http://162.55.220.72:5005/get_method?name=Roman&age=12"
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100    23  100    23    0     0    254      0 --:--:-- --:--:-- --:--:--   261HTTP/1.0 200 OK
+Content-Type: application/json
+Content-Length: 23
+Server: Werkzeug/2.0.1 Python/3.8.10
+Date: Sat, 21 May 2022 18:34:06 GMT
+
+[
+  "Roman",
+  "12"
+]
+2) Написать скрипт который выполнит автоматически пункты 3, 4, 5, 6, 7, 8, 13
+User@R2D2 MINGW64 /d/course QA Group_30/RV-1
+$ touch script.sh
+
+User@R2D2 MINGW64 /d/course QA Group_30/RV-1
+$ cat >>script.sh
+mkdir RV-2
+cd RV-2
+mkdir RV-{3..6}
+cd RV-3
+touch r{1..3}.txt v{1..2}.json
+ls -la
+mv RV-3/r1.txt ../RV-4
+
+$ ./script.sh
+total 0
+drwxr-xr-x 1 User 197121 0 May 22 22:50 .
+drwxr-xr-x 1 User 197121 0 May 22 22:50 ..
+-rw-r--r-- 1 User 197121 0 May 22 22:50 r1.txt
+-rw-r--r-- 1 User 197121 0 May 22 22:50 r2.txt
+-rw-r--r-- 1 User 197121 0 May 22 22:50 r3.txt
+-rw-r--r-- 1 User 197121 0 May 22 22:50 v1.json
+-rw-r--r-- 1 User 197121 0 May 22 22:50 v2.json
+mv: cannot stat 'RV-3/r1.txt': No such file or directory
+
+User@R2D2 MINGW64 /d/course QA Group_30/RV-1
+
+=====================
